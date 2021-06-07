@@ -1,21 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, SafeAreaView, View, Platform } from "react-native";
+import TasksContainer from "./src/components/TasksEpic/TasksContainer";
+import Header from "./src/components/_shared/Header";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Header />
+      <TasksContainer />
+    </SafeAreaView>
+    // SafeAreView permet de se retrouver dans la zonne visible du display (uniquement pour ios)
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    paddingTop: Platform.OS === "android" ? 50 : 50,
+    // J'utilise le composant platform pour savoir sur quel OS je suis
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 });
