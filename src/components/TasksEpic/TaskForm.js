@@ -3,7 +3,6 @@ import {
   TextInput,
   View,
   StyleSheet,
-  Button,
   TouchableOpacity,
   Text,
 } from "react-native";
@@ -16,8 +15,10 @@ const TaskForm = ({ onAddTask }) => {
   };
 
   const _onPressBtn = () => {
-    onAddTask(title);
-    setTitle("");
+    if (title.length > 0) {
+      onAddTask(title);
+      setTitle("");
+    }
   };
 
   return (
